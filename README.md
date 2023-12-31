@@ -1,8 +1,6 @@
-# React + Vite
+Very basic frontend display for 'froakbot'
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This app displays all the output messages from 'froakbot', which are fetched from  'froakbot-website-backend'. The are disaplyed newest to oldest, fetched in 10 post intervals with endless scroll.
 
-Currently, two official plugins are available:
+![image](https://github.com/hikemalliday/froakbot-website-frontend/assets/117792777/b8ea8af9-489a-4dee-88cc-7ad982d7363e)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh

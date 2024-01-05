@@ -1,4 +1,4 @@
-Very basic frontend display for [froakbot]([https://link-url-here.org](https://github.com/hikemalliday/froakbot)).
+Very basic frontend display for [fasdasdasdakbot]([https://link-url-here.org](https://github.com/hikemalliday/froakbot)).
 
 This app displays all the output messages from 'froakbot', which are fetched from  'froakbot-website-backend'. The are disaplyed newest to oldest, fetched in 10 post intervals with endless scroll.
 

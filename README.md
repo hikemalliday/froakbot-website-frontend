@@ -2,7 +2,7 @@
 
 #### V2 of the discord bot frontend
 
-##Component Tree:
+## Component Tree:
 ```
 -<App/>
     -<Header/>

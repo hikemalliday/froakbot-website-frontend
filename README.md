@@ -6,7 +6,7 @@ The bot 'points' to the same database that the discord bot uses. This will allow
 
 The QueryCards are not created yet (these will be the cards I render from the backend fetched results)
 
-The cards on the home page link to the same pages, which I have dubbed 'Views' in the project. The 'Views' are just the main components / pages, which are handled by react-router-dom.
+The cards on the home page link to the same pages, which I will call 'Views' for this readme. The 'Views' are just the main components / pages, which are handled by react-router-dom.
 
 Every active 'View' brings up a 'Filters' button, and each 'View' has its own modal.
 

@@ -6,6 +6,8 @@ The bot 'points' to the same database that the discord bot uses. This will allow
 
 The cards on the home page link to the same pages, which I have dubbed 'Views' in the project. The 'Views' are just the main components / pages, which are handled by react-router-dom.
 
+When a 'View' is rendered, useEffect() with an empty array is called, to perform a fetch to the backend. This fetch sends empty parameters, which means a SELECT ALL.
+
 Every active 'View' brings up a 'Filters' button, and each 'View' has its own modal.
 
 When a 'View' is rendered, a fetch with empty paramteres is sent backend, which basically does a SELECT ALL. If filters are added in the modal, we basically perform a SELECT ALL WHERE

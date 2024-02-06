@@ -19,12 +19,12 @@ export const RaidFiltersModal = ({ isOpen, setIsOpen, raidsFetchObject }) => {
     setIsOpen(!state);
   };
 
-  const handleFormSubmit = (e) => {
+  const handleFormSubmit = async (e) => {
     e.preventDefault();
     const filters = {
       personName: personValue,
     };
-    raidsFetchObject?.setGetRaidsFetch(getRaids(filters));
+    raidsFetchObject?.setGetRaidsFetch(await getRaids(filters));
     closeModal(isOpen);
   };
 

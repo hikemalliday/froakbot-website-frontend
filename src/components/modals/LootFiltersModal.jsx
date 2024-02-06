@@ -19,12 +19,12 @@ export const LootFiltersModal = ({ isOpen, setIsOpen, lootFetchObject }) => {
     setIsOpen(!state);
   };
 
-  const handleFormSubmit = (e) => {
+  const handleFormSubmit = async (e) => {
     e.preventDefault();
     const filters = {
       personName: personValue,
     };
-    lootFetchObject?.setGetLootFetch(getLoot(filters));
+    lootFetchObject?.setGetLootFetch(await getLoot(filters));
     closeModal(isOpen);
   };
 

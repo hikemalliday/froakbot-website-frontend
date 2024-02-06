@@ -1,11 +1,11 @@
 // Add helper functions here?
-export function setActiveViewState(view, propObject) {
+export function setActiveViewState(view, setActiveView) {
   const headerButtonIdsArray = [
     "raids-header-button",
     "loot-header-button",
     "characters-header-button",
   ];
-  propObject?.setActiveView(view);
+  setActiveView(view);
 
   for (let id in headerButtonIdsArray) {
     let arrayElement = headerButtonIdsArray[id];
@@ -21,16 +21,16 @@ export function setActiveViewState(view, propObject) {
   }
 }
 
-export function openModal(modalName, propObject) {
+export function openModal(modalName, modalObject) {
   console.log(`modalName: ${modalName}`);
   if (modalName === "raids") {
     console.log("raids test");
-    propObject?.setIsOpenRaidFilters(true);
+    modalObject?.setIsOpenRaidFilters(true);
   } else if (modalName === "loot") {
     console.log("loot test");
-    propObject?.setIsOpenLootFilters(true);
+    modalObject?.setIsOpenLootFilters(true);
   } else if (modalName === "characters") {
     console.log("characters test");
-    propObject?.setIsOpenCharactersFilters(true);
+    modalObject?.setIsOpenCharactersFilters(true);
   }
 }

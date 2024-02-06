@@ -26,14 +26,14 @@ export const CharactersFiltersModal = ({
     setIsOpen(!state);
   };
 
-  const handleFormSubmit = (e) => {
+  const handleFormSubmit = async (e) => {
     e.preventDefault();
     const filters = {
       personName: personValue,
       guild: guildValue,
       charClass: classValue,
     };
-    charactersFetchObject?.setGetCharactersFetch(getCharacters(filters));
+    charactersFetchObject?.setGetCharactersFetch(await getCharacters(filters));
     closeModal(isOpen);
   };
 

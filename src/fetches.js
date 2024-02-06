@@ -9,7 +9,7 @@ export async function getCharacters(
   try {
     console.log(filters);
     const results = await axios.post(fullUrl, filters);
-    console.log(`fetches.getCharacters_test.results.data: ${results.data}`);
+    //console.log(`fetches.getCharacters_test.results.data: ${results.data}`);
     if (results && results.status === 200) {
       console.log(results.data);
       return results.data;

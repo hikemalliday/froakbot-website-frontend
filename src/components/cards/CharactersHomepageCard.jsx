@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 
-export const CharactersCard = ({ propObject }) => {
+export const CharactersCard = () => {
   let card;
   useEffect(() => {
     card = document.getElementById("characters-card");

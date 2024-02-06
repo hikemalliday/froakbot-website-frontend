@@ -1,30 +1,23 @@
-import React, { useEffect } from "react";
-import { getCharacters } from "../fetches.js";
+import React, { useEffect, useState } from "react";
 import { setActiveViewState } from "../helper.js";
+import QueryCharactersResult from "./cards/QueryCharactersResult.jsx";
 
-export const Characters = ({ propObject, charactersFetchObject }) => {
+export const Characters = ({ setActiveView, charactersFetchObject }) => {
   useEffect(() => {
-    setActiveViewState("characters", propObject);
-
-    const fetchData = async () => {
-      try {
-        charactersFetchObject?.setGetCharactersFetch(
-          getCharacters({
-            personName: "",
-            guild: "",
-            charClass: "",
-          })
-        );
-      } catch (err) {
-        console.error(`ERROR: Characters.fetchData: ${err}`);
-      }
-    };
-    fetchData();
+    setActiveViewState("characters", setActiveView);
   }, []);
 
   return (
     <>
-      <div className="view-content">Characters View</div>
+      <div className="view-content">
+        {charactersFetchObject.getCharactersFetch ? (
+          charactersFetchObject.getCharactersFetch.map((character) => (
+            <div key={character.charName}>{character.charName}</div>
+          ))
+        ) : (
+          <div>Loading...</div>
+        )}
+      </div>
     </>
   );
 };

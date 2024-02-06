@@ -4,18 +4,19 @@ import LootHomepageCard from "./cards/LootHomepageCard.jsx";
 import RaidsHomepageCard from "./cards/RaidsHomepageCard.jsx";
 import { setActiveViewState } from "../helper.js";
 
-export const Home = ({ propObject }) => {
+export const Home = ({ setActiveView, fetchAll }) => {
   useEffect(() => {
-    setActiveViewState("home", propObject);
+    setActiveViewState("home", setActiveView);
+    fetchAll();
   }, []);
   return (
     <>
       <div>
         <p></p>
       </div>
-      <CharactersHomepageCard propObject={propObject} />
-      <LootHomepageCard propObject={propObject} />
-      <RaidsHomepageCard propObject={propObject} />
+      <CharactersHomepageCard />
+      <LootHomepageCard />
+      <RaidsHomepageCard />
     </>
   );
 };

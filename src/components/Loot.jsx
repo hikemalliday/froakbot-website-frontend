@@ -1,20 +1,22 @@
 import React, { useEffect } from "react";
-import { getLoot } from "../fetches.js";
 import { setActiveViewState } from "../helper.js";
-export const Loot = ({ propObject, lootFetchObject }) => {
+export const Loot = ({ setActiveView, lootFetchObject }) => {
   useEffect(() => {
-    setActiveViewState("loot", propObject);
-
-    const fetchData = async () => {
-      try {
-        lootFetchObject?.setGetLootFetch(getLoot({ personName: "" }));
-      } catch (err) {
-        console.error(`ERROR: Characters.fetchData: ${err}`);
-      }
-    };
-    fetchData();
+    setActiveViewState("loot", setActiveView);
   }, []);
-  return <div>Loot View</div>;
+  return (
+    <>
+      <div className="view-content">
+        {lootFetchObject.getLootFetch ? (
+          lootFetchObject.getLootFetch.map((item) => (
+            <div key={item.itemName}>{item.itemName}</div>
+          ))
+        ) : (
+          <div>Loading...</div>
+        )}
+      </div>
+    </>
+  );
 };
 
 export default Loot;

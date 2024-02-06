@@ -4,18 +4,18 @@ import CharactersFiltersModal from "./modals/CharactersFiltersModal";
 import LootFiltersModal from "./modals/LootFiltersModal";
 import RaidFiltersModal from "./modals/RaidFiltersModal";
 
-export const Header = ({ propObject, entireFetchObject }) => {
+export const Header = ({ modalObject, activeView, entireFetchObject }) => {
   const openModal = (modalName) => {
     console.log(`modalName: ${modalName}`);
     if (modalName === "raids") {
       console.log("raids test");
-      propObject?.setIsOpenRaidFilters(true);
+      modalObject?.setIsOpenRaidFiltersModal(true);
     } else if (modalName === "loot") {
       console.log("loot test");
-      propObject?.setIsOpenLootFilters(true);
+      modalObject?.setIsOpenLootFiltersModal(true);
     } else if (modalName === "characters") {
       console.log("characters test");
-      propObject?.setIsOpenCharactersFilters(true);
+      modalObject?.setIsOpenCharactersFiltersModal(true);
     }
   };
 
@@ -26,12 +26,12 @@ export const Header = ({ propObject, entireFetchObject }) => {
           FROAKBOT
         </Link>
         <div className="header-buttons-container">
-          {propObject?.activeView !== "home" && (
+          {activeView !== "home" && (
             <>
               <div
                 id="filters-header-button"
                 className="header-button"
-                onClick={() => openModal(propObject?.activeView)}
+                onClick={() => openModal(activeView)}
               >
                 FILTERS
               </div>
@@ -55,24 +55,24 @@ export const Header = ({ propObject, entireFetchObject }) => {
           </Link>
         </div>
       </div>
-      {propObject?.isOpenRaidFilters && (
+      {modalObject?.isOpenRaidFiltersModal && (
         <RaidFiltersModal
-          isOpen={propObject?.isOpenRaidFilters}
-          setIsOpen={propObject?.setIsOpenRaidFilters}
+          isOpen={modalObject?.isOpenRaidFiltersModal}
+          setIsOpen={modalObject?.setIsOpenRaidFiltersModal}
           raidsFetchObject={entireFetchObject?.raidsFetchObject}
         />
       )}
-      {propObject?.isOpenLootFilters && (
+      {modalObject?.isOpenLootFiltersModal && (
         <LootFiltersModal
-          isOpen={propObject?.isOpenLootFilters}
-          setIsOpen={propObject?.setIsOpenLootFilters}
+          isOpen={modalObject?.isOpenLootFiltersModal}
+          setIsOpen={modalObject?.setIsOpenLootFiltersModal}
           lootFetchObject={entireFetchObject?.lootFetchObject}
         />
       )}
-      {propObject?.isOpenCharactersFilters && (
+      {modalObject?.isOpenCharactersFiltersModal && (
         <CharactersFiltersModal
-          isOpen={propObject?.isOpenCharactersFilters}
-          setIsOpen={propObject?.setIsOpenCharactersFilters}
+          isOpen={modalObject?.isOpenCharactersFiltersModal}
+          setIsOpen={modalObject?.setIsOpenCharactersFiltersModal}
           charactersFetchObject={entireFetchObject?.charactersFetchObject}
         />
       )}

@@ -1,0 +1,211 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  place-items: center;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+.view-content {
+  position: absolute;
+  padding-top: 30px;
+  padding-left: 200px;
+  padding-right: 200px;
+  top: 50px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  overflow-y: scroll;
+}
+
+@media screen and (max-width: 1000px) {
+  .view-content {
+    padding-left: 100px;
+    padding-right: 100px;
+  }
+}
+
+.modal-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 1000;
+}
+
+.modal-main {
+  background-color: white;
+  color: Black;
+  border-radius: 15px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  background-color: "#FFF";
+  padding: 50px;
+  z-index: 2000;
+  transition: transform 0.1s ease-in-out;
+}
+
+.modal-main.show {
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.modal-title {
+  display: flex;
+  justify-content: center;
+  font-size: large;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+button {
+  border-radius: 5px;
+  margin-top: 15px;
+  background-color: #0742c2;
+  border: none;
+  color: white;
+  padding: 5px 10px;
+  text-align: center;
+  font-size: 16px;
+}
+
+button:hover {
+  background-color: #2268ff;
+}
+
+button:active {
+  background-color: #0742c2;
+}
+
+/* Individual modal stylings:*/
+.modal-inputs-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-left: 1px;
+  margin-right: 1px;
+  margin-top: 10%;
+}
+
+.header-main-container {
+  background-color: #6495ff;
+  height: 51px;
+  justify-content: space-between;
+  display: flex;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.logo {
+  font-size: 3.2em;
+  line-height: 1.1;
+  text-decoration: none;
+  color: white;
+  display: flex;
+  align-items: flex-end;
+  margin-left: 5px;
+}
+
+.logo:hover {
+  color: #12347d;
+  cursor: pointer;
+}
+
+.logo:active {
+  color: #1b4bb3;
+  cursor: pointer;
+}
+
+.header-buttons-container {
+  display: flex;
+  align-items: flex-end;
+  margin-bottom: 4px;
+}
+
+.header-button {
+  text-decoration: none;
+  margin-left: 5px;
+  margin-right: 5px;
+  color: white;
+}
+
+.header-button.active-view {
+  color: #12347d;
+}
+
+.header-button:hover {
+  color: #12347d;
+  cursor: pointer;
+}
+
+.header-button:active {
+  color: #1b4bb3;
+  cursor: pointer;
+}
+
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+}
+
+.homepage-card {
+  border-radius: 5px;
+  background-color: white;
+  height: 150px;
+  width: 400px;
+  color: White;
+  font-size: x-large;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-start;
+  padding: 5px;
+  padding-left: 10px;
+  border: 3px solid transparent;
+  user-select: none;
+  cursor: pointer;
+}
+
+.homepage-card:hover {
+  border: 3px solid white;
+}
+.homepage-card.active {
+  border: 3px solid black;
+  color: black;
+}
+
+.homepage-card.raid {
+  background-image: url("./images/dragon.JPG");
+  background-size: cover;
+}
+
+.homepage-card.loot {
+  background-image: url("./images/loot.JPG");
+  background-size: cover;
+}
+
+.homepage-card.characters {
+  background-image: url("./images/characters.JPG");
+  background-size: cover;
+}

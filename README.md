@@ -4,7 +4,7 @@
 
 The bot 'points' to the same database that the discord bot uses. This will allow guildmates to query the database through a nice, clean frontend.
 
-The cards on the home page link to the same pages, which I have dubbed 'Views' in the project. The 'Views' are just the main components / pages.
+The cards on the home page link to the same pages, which I have dubbed 'Views' in the project. The 'Views' are just the main components / pages, which are handled by react-router-dom.
 
 Every active 'View' brings up a 'Filters' button, and each 'View' has its own modal.
 

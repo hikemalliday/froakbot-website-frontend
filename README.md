@@ -3,6 +3,7 @@
 #### V2 of the discord bot frontend
 
 ##Component Tree:
+```
 -<App/>
     -<Header/>
         -<RaidFiltersModal/>
@@ -24,7 +25,7 @@
         -<Route/>
             -path="/raids
             -element=[<Raids/>}
-
+```
 The bot 'points' to the same database that the discord bot uses. This will allow guildmates to query the database through a nice, clean frontend.
 
 The QueryCards are not created yet (these will be the cards I render from the backend fetched results), for now im simply rendering basic strings from the fetched objects.

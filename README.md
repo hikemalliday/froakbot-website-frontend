@@ -1,8 +1,7 @@
-# React + Vite
+# Froakbot-Website-Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+#### V2 of the discord bot frontend
 
-Currently, two official plugins are available:
+The bot will 'point' to the same database that the discord bot uses. This will allow guildmates to query the database through a nice, clean frontend.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+(![image](https://github.com/hikemalliday/froakbot-website-frontend/assets/117792777/61e23bf1-26c5-47fe-a67a-f7917694e3fc)

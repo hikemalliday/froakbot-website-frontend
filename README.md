@@ -2,7 +2,7 @@
 
 #### V2 of the discord bot frontend
 
-The bot will 'point' to the same database that the discord bot uses. This will allow guildmates to query the database through a nice, clean frontend.
+The bot 'points' to the same database that the discord bot uses. This will allow guildmates to query the database through a nice, clean frontend.
 
 The cards on the home page link to the same pages, which I have dubbed 'Views' in the project. The 'Views' are just the main components / pages.
 

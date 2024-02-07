@@ -6,7 +6,6 @@ import Characters from "./components/Characters";
 import Loot from "./components/Loot";
 import Raids from "./components/Raids";
 import { getCharacters, getRaids, getLoot } from "./fetches";
-
 import "./App.css";
 
 function App() {
@@ -46,6 +45,7 @@ function App() {
       console.error(`ERROR: App.fetchCharacters: ${err}`);
     }
   };
+
   const fetchRaids = async () => {
     try {
       const data = await getRaids();
@@ -54,6 +54,7 @@ function App() {
       console.error(`ERROR: App.fetchRaids: ${err}`);
     }
   };
+
   const fetchLoot = async () => {
     try {
       const data = await getLoot();
@@ -68,6 +69,7 @@ function App() {
     fetchRaids();
     fetchLoot();
   };
+
   useEffect(() => {
     fetchCharacters();
     fetchRaids();

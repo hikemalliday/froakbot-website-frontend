@@ -23,3 +23,6 @@ config.js
 *.sln
 *.sw?
 /images
+jest.config.json
+babel.config.js
+.babelrc

@@ -1,40 +1,26 @@
 import axios from "axios";
 import { url } from "./config";
 
-export async function getCharacters(
-  filters = { personName: "", guild: "", charClass: "" }
-) {
-  const fullUrl = `${url}get_characters`;
-
-  try {
-    console.log(filters);
-    const results = await axios.post(fullUrl, filters);
-    //console.log(`fetches.getCharacters_test.results.data: ${results.data}`);
-    if (results && results.status === 200) {
-      console.log(results.data);
-      return results.data;
-    } else {
-      console.log(
-        `ERROR: fetches.getCharacters: Received status code ${results.status}`
-      );
-    }
-  } catch (err) {
-    console.log(`ERROR: fetches.getCharacters: ${err}`);
-  }
+function titleCase(str) {
+  return str.toLowerCase().replace(/\b\w/g, function (char) {
+    return char.toUpperCase();
+  });
 }
+export async function getRaids() {
+  const queryParams = new URLSearchParams(window.location.search);
 
-export async function getRaids(filters = { personName: "" }) {
+  let personName = queryParams.get("personName") || "";
+  if (personName) personName = titleCase(personName);
   const fullUrl = `${url}get_raids`;
+
   try {
-    console.log(filters);
-    const results = await axios.post(fullUrl, filters);
-    console.log(`fetches.getRaids.results.data: ${results.data}`);
+    const results = await axios.get(fullUrl, { params: { personName } });
+
     if (results && results.status === 200) {
-      console.log(results.data);
       return results.data;
     } else {
       console.log(
-        `ERROR: fetches.getRaids: Received status code ${results.status}`
+        `ERROR: fetches.getRaids: Received status code ${results.status}`,
       );
     }
   } catch (err) {
@@ -42,18 +28,60 @@ export async function getRaids(filters = { personName: "" }) {
   }
 }
 
-export async function getLoot(filters = { personName: "" }) {
+export async function getLoot() {
+  const queryParams = new URLSearchParams(window.location.search);
+
+  let personName = queryParams.get("personName") || "";
+  if (personName) personName = titleCase(personName);
   const fullUrl = `${url}get_loot`;
+
   try {
-    console.log(filters);
-    const results = await axios.post(fullUrl, filters);
-    console.log(`fetches.getLoot.data: ${results.data}`);
+    const results = await axios.get(fullUrl, { params: { personName } });
+
     if (results && results.status === 200) {
-      console.log(results.data);
       return results.data;
     } else {
       console.log(
-        `ERROR: fetches.getLoot: Received status code ${results.status}`
+        `ERROR: fetches.getLoot: Received status code ${results.status}`,
+      );
+    }
+  } catch (err) {
+    console.log(`ERROR: fetches.getLoot: ${err}`);
+  }
+}
+
+export async function getCharacters() {
+  const queryParams = new URLSearchParams(window.location.search);
+
+  let personName = queryParams.get("personName") || "";
+  if (personName) personName = titleCase(personName);
+
+  let guild = queryParams.get("guild") || "";
+  if (guild) guild = titleCase(guild);
+
+  let charClass = queryParams.get("charClass") || "";
+  if (charClass) charClass = titleCase(charClass);
+
+  const queryString = new URLSearchParams({
+    personName,
+    guild,
+    charClass,
+  }).toString();
+
+  console.log("getCharacters.queryString:");
+  console.log(queryString);
+  const fullUrl = `${url}get_characters`;
+
+  try {
+    const results = await axios.get(fullUrl, {
+      params: { personName, guild, charClass },
+    });
+
+    if (results && results.status === 200) {
+      return results.data;
+    } else {
+      console.log(
+        `ERROR: fetches.getLoot: Received status code ${results.status}`,
       );
     }
   } catch (err) {

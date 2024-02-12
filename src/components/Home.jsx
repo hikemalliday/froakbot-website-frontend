@@ -7,7 +7,6 @@ import { setActiveViewState } from "../helper.js";
 export const Home = ({ setActiveView, fetchAll }) => {
   useEffect(() => {
     setActiveViewState("home", setActiveView);
-    fetchAll();
   }, []);
   return (
     <>

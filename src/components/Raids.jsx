@@ -1,18 +1,21 @@
 import React, { useEffect } from "react";
 import { setActiveViewState } from "../helper.js";
+import RaidsResultCard from "./cards/RaidsResultCard.jsx";
+
 export const Raids = ({ setActiveView, raidsFetchObject }) => {
   useEffect(() => {
     setActiveViewState("raids", setActiveView);
+    raidsFetchObject?.fetchRaids();
   }, []);
   return (
     <>
       <div className="view-content">
         {raidsFetchObject.getRaidsFetch ? (
           raidsFetchObject.getRaidsFetch.map((raid) => (
-            <div key={raid.raidId}>{raid.raidName}</div>
+            <RaidsResultCard key={raid.raidId} raid={raid} />
           ))
         ) : (
-          <div>Loading...</div>
+          <div>Results not found.</div>
         )}
       </div>
     </>

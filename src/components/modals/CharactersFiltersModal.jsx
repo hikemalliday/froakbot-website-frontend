@@ -6,6 +6,8 @@ export const CharactersFiltersModal = ({
   isOpen,
   setIsOpen,
   charactersFetchObject,
+  setCharactersFiltersParams,
+  charactersFiltersParams,
 }) => {
   if (!isOpen) return null;
 
@@ -41,7 +43,7 @@ export const CharactersFiltersModal = ({
     <>
       <div className="modal-background" onClick={() => closeModal(isOpen)} />
       <div className="modal-main">
-        <div className="modal-title">
+        <div className="modal-header">
           <div>Characters Filters</div>
         </div>
         <form onSubmit={handleFormSubmit}>
@@ -49,19 +51,52 @@ export const CharactersFiltersModal = ({
             <div className="modal-input-field">
               <div>Person:</div>
               <div>
-                <input onChange={(e) => setPersonValue(e.target.value)} />
+                <input
+                  value={charactersFiltersParams.get("personName")}
+                  onChange={(e) =>
+                    setCharactersFiltersParams(
+                      (prev) => {
+                        prev.set("personName", e.target.value);
+                        return prev;
+                      },
+                      { replace: true },
+                    )
+                  }
+                />
               </div>
             </div>
             <div className="modal-input-field">
               <div>Guild:</div>
               <div>
-                <input onChange={(e) => setGuildValue(e.target.value)} />
+                <input
+                  value={charactersFiltersParams.get("guild")}
+                  onChange={(e) =>
+                    setCharactersFiltersParams(
+                      (prev) => {
+                        prev.set("guild", e.target.value);
+                        return prev;
+                      },
+                      { replace: true },
+                    )
+                  }
+                />
               </div>
             </div>
             <div className="modal-input-field">
               <div>Class:</div>
               <div>
-                <input onChange={(e) => setClassValue(e.target.value)} />
+                <input
+                  value={charactersFiltersParams.get("charClass")}
+                  onChange={(e) =>
+                    setCharactersFiltersParams(
+                      (prev) => {
+                        prev.set("charClass", e.target.value);
+                        return prev;
+                      },
+                      { replace: true },
+                    )
+                  }
+                />
               </div>
             </div>
             <button type="submit">Search</button>
@@ -69,7 +104,7 @@ export const CharactersFiltersModal = ({
         </form>
       </div>
     </>,
-    document.getElementById("modal")
+    document.getElementById("modal"),
   );
 };
 

@@ -2,7 +2,13 @@ import React, { useEffect, useState } from "react";
 import ReactDom from "react-dom";
 import { getRaids } from "../../fetches.js";
 
-export const RaidFiltersModal = ({ isOpen, setIsOpen, raidsFetchObject }) => {
+export const RaidFiltersModal = ({
+  isOpen,
+  setIsOpen,
+  setRaidsFilterParams,
+  raidsFetchObject,
+  raidsFiltersParams,
+}) => {
   if (!isOpen) return null;
   const [personValue, setPersonValue] = useState("");
 
@@ -21,10 +27,8 @@ export const RaidFiltersModal = ({ isOpen, setIsOpen, raidsFetchObject }) => {
 
   const handleFormSubmit = async (e) => {
     e.preventDefault();
-    const filters = {
-      personName: personValue,
-    };
-    raidsFetchObject?.setGetRaidsFetch(await getRaids(filters));
+
+    raidsFetchObject?.fetchRaids();
     closeModal(isOpen);
   };
 
@@ -32,7 +36,7 @@ export const RaidFiltersModal = ({ isOpen, setIsOpen, raidsFetchObject }) => {
     <>
       <div className="modal-background" onClick={() => closeModal(isOpen)} />
       <div className="modal-main">
-        <div className="modal-title">
+        <div className="modal-header">
           <div>Raid Filters</div>
         </div>
         <form onSubmit={handleFormSubmit}>
@@ -40,7 +44,18 @@ export const RaidFiltersModal = ({ isOpen, setIsOpen, raidsFetchObject }) => {
             <div className="modal-input-field">
               <div>Person:</div>
               <div>
-                <input onChange={(e) => setPersonValue(e.target.value)} />
+                <input
+                  value={raidsFiltersParams.get("personName")}
+                  onChange={(e) =>
+                    setRaidsFilterParams(
+                      (prev) => {
+                        prev.set("personName", e.target.value);
+                        return prev;
+                      },
+                      { replace: true },
+                    )
+                  }
+                />
               </div>
             </div>
             <button type="submit">Search</button>
@@ -48,7 +63,7 @@ export const RaidFiltersModal = ({ isOpen, setIsOpen, raidsFetchObject }) => {
         </form>
       </div>
     </>,
-    document.getElementById("modal")
+    document.getElementById("modal"),
   );
 };
 

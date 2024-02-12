@@ -1,3 +1,5 @@
+
+
 #root {
   max-width: 1280px;
   margin: 0 auto;
@@ -20,15 +22,17 @@ a {
 }
 
 .view-content {
-  position: absolute;
+  /*display: flex;*/
+  /*flex-direction: column;*/
+  /*align-items: center;*/
+  /*position: absolute;*/
+  /*top: 50px;*/
+  /*left: 0;*/
+  /*right: 0;*/
+  /*bottom: 0;*/
+  /*overflow-y: scroll;*/
   padding-top: 30px;
-  padding-left: 200px;
-  padding-right: 200px;
-  top: 50px;
-  left: 0px;
-  right: 0px;
-  bottom: 0px;
-  overflow-y: scroll;
+
 }
 
 @media screen and (max-width: 1000px) {
@@ -38,68 +42,13 @@ a {
   }
 }
 
-.modal-background {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(0, 0, 0, 0.7);
-  z-index: 1000;
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
 }
 
-.modal-main {
-  background-color: white;
-  color: Black;
-  border-radius: 15px;
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%) scale(0);
-  background-color: "#FFF";
-  padding: 50px;
-  z-index: 2000;
-  transition: transform 0.1s ease-in-out;
-}
-
-.modal-main.show {
-  transform: translate(-50%, -50%) scale(1);
-}
-
-.modal-title {
-  display: flex;
-  justify-content: center;
-  font-size: large;
-  font-family: Arial, Helvetica, sans-serif;
-}
-
-button {
-  border-radius: 5px;
-  margin-top: 15px;
-  background-color: #0742c2;
-  border: none;
-  color: white;
-  padding: 5px 10px;
-  text-align: center;
-  font-size: 16px;
-}
-
-button:hover {
-  background-color: #2268ff;
-}
-
-button:active {
-  background-color: #0742c2;
-}
-
-/* Individual modal stylings:*/
-.modal-inputs-container {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  margin-left: 1px;
-  margin-right: 1px;
-  margin-top: 10%;
+h4 {
+  margin: 0
 }
 
 .header-main-container {
@@ -113,6 +62,18 @@ button:active {
   left: 0;
   margin: 0;
   text-transform: uppercase;
+}
+
+.dropdown {
+  position: absolute;
+  border-radius: 2px;
+  background-color: #6495ff;
+  padding: 4px;
+  z-index: 1000;
+}
+
+.dropdown:hover {
+  background-color: #7aa9ff;
 }
 
 .logo {
@@ -162,11 +123,6 @@ button:active {
   cursor: pointer;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-}
-
 .homepage-card {
   border-radius: 5px;
   background-color: white;
@@ -190,6 +146,7 @@ h1 {
 .homepage-card:hover {
   border: 3px solid white;
 }
+
 .homepage-card.active {
   border: 3px solid black;
   color: black;
@@ -210,9 +167,114 @@ h1 {
   background-size: cover;
 }
 
-.query-result-card {
-  background-color: #777;
-  padding: 10px;
-  border-radius: 5px;
+.query-result-card-container {
+  width: 400px;
+  background-color: #282828;
+  margin: 10px;
+  border-radius: 6px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.query-result-card-data {
+
+  display: flex;
+  flex-direction: column;
+
+ padding: 5px;
+}
+
+.query-result-card-header {
+  background-color: #3d3d3d;
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+}
+
+.raid-usernames-header {
+  font-weight: bold;
+  background-color: #2d2d2d;
+}
+
+.raid-loot-header {
+  font-weight: bold;
+  background-color: #2d2d2d;
+}
+
+.raid-loot-container {
+margin-top: 2px;
+}
+
+.modal-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 1000;
+}
+
+.modal-main {
+  background-color: white;
+  color: Black;
+  border-radius: 15px;
+  position: fixed;
+  top: 25%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  padding: 30px;
+  z-index: 2000;
+  transition: transform 0.1s ease-in-out;
+}
+
+.modal-main.show {
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.modal-header {
+  background-color: #3e7cff;
+  border-radius: 5px;
+  padding: 1px;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  font-size: large;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.modal-inputs-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-left: 1px;
+  margin-right: 1px;
+  margin-top: 10%;
+}
+
+button {
+  border-radius: 5px;
+  margin-top: 15px;
+  background-color: #0742c2;
+  border: none;
+  color: white;
+  padding: 5px 10px;
+  text-align: center;
+  font-size: 16px;
+}
+
+button:hover {
+  background-color: #2268ff;
+}
+
+button:active {
+  background-color: #0742c2;
+}
+
+
+
+
+.item-icon {
+  width: 25px;
+  height: auto;
+  padding-top: 10px;
 }

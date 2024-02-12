@@ -1,8 +1,13 @@
 import React, { useEffect, useState } from "react";
 import ReactDom from "react-dom";
-import { getLoot } from "../../fetches.js";
 
-export const LootFiltersModal = ({ isOpen, setIsOpen, lootFetchObject }) => {
+export const LootFiltersModal = ({
+  isOpen,
+  setIsOpen,
+  lootFetchObject,
+  setLootFiltersParams,
+  lootFiltersParams,
+}) => {
   if (!isOpen) return null;
   const [personValue, setPersonValue] = useState("");
 
@@ -21,10 +26,8 @@ export const LootFiltersModal = ({ isOpen, setIsOpen, lootFetchObject }) => {
 
   const handleFormSubmit = async (e) => {
     e.preventDefault();
-    const filters = {
-      personName: personValue,
-    };
-    lootFetchObject?.setGetLootFetch(await getLoot(filters));
+
+    lootFetchObject?.fetchLoot();
     closeModal(isOpen);
   };
 
@@ -32,7 +35,7 @@ export const LootFiltersModal = ({ isOpen, setIsOpen, lootFetchObject }) => {
     <>
       <div className="modal-background" onClick={() => closeModal(isOpen)} />
       <div className="modal-main">
-        <div className="modal-title">
+        <div className="modal-header">
           <div>Loot Filters</div>
         </div>
         <form onSubmit={handleFormSubmit}>
@@ -40,7 +43,18 @@ export const LootFiltersModal = ({ isOpen, setIsOpen, lootFetchObject }) => {
             <div className="modal-input-field">
               <div>Person:</div>
               <div>
-                <input onChange={(e) => setPersonValue(e.target.value)} />
+                <input
+                  value={lootFiltersParams.get("personName")}
+                  onChange={(e) =>
+                    setLootFiltersParams(
+                      (prev) => {
+                        prev.set("personName", e.target.value);
+                        return prev;
+                      },
+                      { replace: true },
+                    )
+                  }
+                />
               </div>
             </div>
             <button type="submit">Search</button>
@@ -48,7 +62,7 @@ export const LootFiltersModal = ({ isOpen, setIsOpen, lootFetchObject }) => {
         </form>
       </div>
     </>,
-    document.getElementById("modal")
+    document.getElementById("modal"),
   );
 };
 

@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { setActiveViewState } from "../helper.js";
-import QueryCharactersResult from "./cards/QueryCharactersResult.jsx";
+import CharactersResultCard from "./cards/CharactersResultCard.jsx";
 
 export const Characters = ({ setActiveView, charactersFetchObject }) => {
   useEffect(() => {
     setActiveViewState("characters", setActiveView);
+    charactersFetchObject.fetchCharacters();
   }, []);
 
   return (
@@ -12,10 +13,13 @@ export const Characters = ({ setActiveView, charactersFetchObject }) => {
       <div className="view-content">
         {charactersFetchObject.getCharactersFetch ? (
           charactersFetchObject.getCharactersFetch.map((character) => (
-            <div key={character.charName}>{character.charName}</div>
+            <CharactersResultCard
+              key={character.charName}
+              character={character}
+            />
           ))
         ) : (
-          <div>Loading...</div>
+          <div>Results not found.</div>
         )}
       </div>
     </>

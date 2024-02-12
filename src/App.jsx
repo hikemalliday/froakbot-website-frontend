@@ -1,14 +1,28 @@
 import Header from "./components/Header";
-import { useState, useEffect } from "react";
-import { Route, Routes } from "react-router-dom";
+import { useState } from "react";
+import { Route, Routes, useSearchParams } from "react-router-dom";
 import Home from "./components/Home";
 import Characters from "./components/Characters";
 import Loot from "./components/Loot";
 import Raids from "./components/Raids";
+import React from "react";
 import { getCharacters, getRaids, getLoot } from "./fetches";
-import "./App.css";
 
 function App() {
+  const [raidsFiltersParams, setRaidsFilterParams] = useSearchParams({
+    personName: "",
+  });
+
+  const [lootFiltersParams, setLootFiltersParams] = useSearchParams({
+    personName: "",
+  });
+
+  const [charactersFiltersParams, setCharactersFilterParams] = useSearchParams({
+    personName: "",
+    guild: "",
+    charClass: "",
+  });
+
   const [isOpenRaidFiltersModal, setIsOpenRaidFiltersModal] = useState(false);
   const [isOpenLootFiltersModal, setIsOpenLootFiltersModal] = useState(false);
   const [isOpenCharactersFiltersModal, setIsOpenCharactersFiltersModal] =
@@ -17,25 +31,6 @@ function App() {
   const [getLootFetch, setGetLootFetch] = useState(null);
   const [getCharactersFetch, setGetCharactersFetch] = useState(null);
   const [getRaidsFetch, setGetRaidsFetch] = useState(null);
-
-  const modalObject = {
-    isOpenRaidFiltersModal,
-    setIsOpenRaidFiltersModal,
-    isOpenLootFiltersModal,
-    setIsOpenLootFiltersModal,
-    isOpenCharactersFiltersModal,
-    setIsOpenCharactersFiltersModal,
-  };
-
-  const lootFetchObject = { getLootFetch, setGetLootFetch };
-  const charactersFetchObject = { getCharactersFetch, setGetCharactersFetch };
-  const raidsFetchObject = { getRaidsFetch, setGetRaidsFetch };
-
-  const entireFetchObject = {
-    lootFetchObject,
-    charactersFetchObject,
-    raidsFetchObject,
-  };
 
   const fetchCharacters = async () => {
     try {
@@ -64,17 +59,47 @@ function App() {
     }
   };
 
-  const fetchAll = async () => {
-    fetchCharacters();
-    fetchRaids();
-    fetchLoot();
+  const modalObject = {
+    raidsFiltersParams,
+    lootFiltersParams,
+    charactersFiltersParams,
+    setRaidsFilterParams,
+    setLootFiltersParams,
+    setCharactersFilterParams,
+    isOpenRaidFiltersModal,
+    setIsOpenRaidFiltersModal,
+    isOpenLootFiltersModal,
+    setIsOpenLootFiltersModal,
+    isOpenCharactersFiltersModal,
+    setIsOpenCharactersFiltersModal,
   };
 
-  useEffect(() => {
-    fetchCharacters();
-    fetchRaids();
-    fetchLoot();
-  }, []);
+  const lootFetchObject = {
+    fetchLoot,
+    getLootFetch,
+    setGetLootFetch,
+    lootFiltersParams,
+  };
+
+  const charactersFetchObject = {
+    fetchCharacters,
+    getCharactersFetch,
+    setGetCharactersFetch,
+    charactersFiltersParams,
+  };
+
+  const raidsFetchObject = {
+    fetchRaids,
+    getRaidsFetch,
+    setGetRaidsFetch,
+    raidsFiltersParams,
+  };
+
+  const entireFetchObject = {
+    lootFetchObject,
+    charactersFetchObject,
+    raidsFetchObject,
+  };
 
   return (
     <>
@@ -84,10 +109,7 @@ function App() {
         activeView={activeView}
       />
       <Routes>
-        <Route
-          path="/"
-          element={<Home setActiveView={setActiveView} fetchAll={fetchAll} />}
-        />
+        <Route path="/" element={<Home setActiveView={setActiveView} />} />
         <Route
           path="/characters"
           element={

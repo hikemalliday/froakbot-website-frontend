@@ -1,11 +1,6 @@
 import axios from "axios";
 import { url } from "./config";
 
-function titleCase(str) {
-  return str.toLowerCase().replace(/\b\w/g, function (char) {
-    return char.toUpperCase();
-  });
-}
 export async function getRaids() {
   const queryParams = new URLSearchParams(window.location.search);
 
@@ -25,28 +20,6 @@ export async function getRaids() {
     }
   } catch (err) {
     console.log(`ERROR: fetches.getRaids: ${err}`);
-  }
-}
-
-export async function getLoot() {
-  const queryParams = new URLSearchParams(window.location.search);
-
-  let personName = queryParams.get("personName") || "";
-  if (personName) personName = titleCase(personName);
-  const fullUrl = `${url}get_loot`;
-
-  try {
-    const results = await axios.get(fullUrl, { params: { personName } });
-
-    if (results && results.status === 200) {
-      return results.data;
-    } else {
-      console.log(
-        `ERROR: fetches.getLoot: Received status code ${results.status}`,
-      );
-    }
-  } catch (err) {
-    console.log(`ERROR: fetches.getLoot: ${err}`);
   }
 }
 

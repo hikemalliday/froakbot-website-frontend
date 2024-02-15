@@ -2,7 +2,7 @@ import Home from "./Home";
 import { screen, render, fireEvent } from "@testing-library/react";
 import React from "react";
 import "@testing-library/jest-dom";
-const setActiveView = jest.fn();
+
 const fetchAll = jest.fn();
 jest.mock("react-router-dom", () => ({
   ...jest.requireActual("react-router-dom"),
@@ -11,7 +11,7 @@ jest.mock("react-router-dom", () => ({
 
 describe("Assert that all 3 homepage cards rendered", () => {
   beforeEach(() => {
-    render(<Home setActiveView={setActiveView} fetchAll={fetchAll} />);
+    render(<Home fetchAll={fetchAll} />);
   });
   it("Renders CharactersHomepageCard.jsx", () => {
     expect(screen.getByText("Characters")).toBeInTheDocument();

@@ -4,9 +4,11 @@ import RaidsResultCard from "./RaidsResultCard";
 
 beforeEach(() => {
   const raidObject = {
+    raidName: "Fizz",
     raidId: 1,
-    raidName: "test raid name",
     raidDate: "09-01-1987",
+    usernames: ["fizz", "buzz"],
+    loot: ["fizz", "buzz"],
   };
   render(<RaidsResultCard raid={raidObject} />);
 });

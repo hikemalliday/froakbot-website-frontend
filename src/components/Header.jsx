@@ -5,7 +5,7 @@ import LootFiltersModal from "./modals/LootFiltersModal";
 import RaidFiltersModal from "./modals/RaidFiltersModal";
 import { Dropdown } from "./Dropdown/Dropdown.jsx";
 
-export const Header = ({ modalObject, activeView, entireFetchObject }) => {
+export const Header = ({ modalObject, entireFetchObject }) => {
   const [visibleDropdown, setVisibleDropdown] = useState("");
 
   const openModal = (modalName) => {

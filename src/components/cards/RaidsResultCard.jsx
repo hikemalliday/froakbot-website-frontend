@@ -1,9 +1,9 @@
 import React from "react";
 
-export const RaidResultCard = ({ raid }) => {
+export const RaidResultCard = React.forwardRef(({ raid }, ref) => {
   return (
     <>
-      <div className="query-result-card-container">
+      <div className="query-result-card-container" ref={ref ? ref : null}>
         <div className="query-result-card-header">
           <h4 data-testid="raid-name">{raid.raidName}</h4>
         </div>
@@ -37,6 +37,6 @@ export const RaidResultCard = ({ raid }) => {
       </div>
     </>
   );
-};
+});
 
 export default RaidResultCard;

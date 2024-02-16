@@ -1,5 +1,4 @@
 
-
 #root {
   max-width: 1280px;
   margin: 0 auto;
@@ -31,7 +30,7 @@ a {
   /*right: 0;*/
   /*bottom: 0;*/
   /*overflow-y: scroll;*/
-  padding-top: 30px;
+  padding-top: 60px;
 
 }
 
@@ -49,19 +48,6 @@ h1 {
 
 h4 {
   margin: 0
-}
-
-.header-main-container {
-  background-color: #6495ff;
-  height: 51px;
-  justify-content: space-between;
-  display: flex;
-  width: 100%;
-  position: fixed;
-  top: 0;
-  left: 0;
-  margin: 0;
-  text-transform: uppercase;
 }
 
 .dropdown {
@@ -96,6 +82,19 @@ h4 {
   cursor: pointer;
 }
 
+.header-main-container {
+  background-color: #6495ff;
+  height: 51px;
+  justify-content: space-between;
+  display: flex;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  margin: 0;
+  text-transform: uppercase;
+}
+
 .header-buttons-container {
   display: flex;
   align-items: flex-end;
@@ -121,6 +120,33 @@ h4 {
 .header-button:active {
   color: #1b4bb3;
   cursor: pointer;
+}
+
+.sub-header {
+  background-color: #3d3d3d;
+  justify-content: flex-end;
+  display: flex;
+  position: fixed;
+  width: 100%;
+  height: 25px;
+  top: 51px;
+  left: 0;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.sub-header-button:hover {
+  color: #c3d2ff;
+  cursor: pointer;
+}
+
+.sub-header-button:active {
+  color: #9cb3ff;
+  cursor: pointer;
+}
+
+.sub-header-button {
+  margin-right: 6px;
 }
 
 .two-cards {
@@ -273,9 +299,6 @@ button:hover {
 button:active {
   background-color: #0742c2;
 }
-
-
-
 
 .item-icon {
   width: 25px;

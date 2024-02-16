@@ -1,19 +1,18 @@
-import React, { useEffect, useState } from "react";
+import { useEffect } from "react";
 import ReactDom from "react-dom";
-import { getCharacters } from "../../fetches.js";
 
 export const CharactersFiltersModal = ({
   isOpen,
   setIsOpen,
-  charactersFetchObject,
   setCharactersFiltersParams,
   charactersFiltersParams,
+  getCharactersModalFetch,
 }) => {
   if (!isOpen) return null;
 
-  const [personValue, setPersonValue] = useState("");
-  const [guildValue, setGuildValue] = useState("");
-  const [classValue, setClassValue] = useState("");
+  // const [personValue, setPersonValue] = useState("");
+  // const [guildValue, setGuildValue] = useState("");
+  // const [classValue, setClassValue] = useState("");
 
   useEffect(() => {
     setTimeout(() => {
@@ -30,12 +29,7 @@ export const CharactersFiltersModal = ({
 
   const handleFormSubmit = async (e) => {
     e.preventDefault();
-    const filters = {
-      personName: personValue,
-      guild: guildValue,
-      charClass: classValue,
-    };
-    charactersFetchObject?.setGetCharactersFetch(await getCharacters(filters));
+    getCharactersModalFetch();
     closeModal(isOpen);
   };
 

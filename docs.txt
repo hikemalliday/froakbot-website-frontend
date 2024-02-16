@@ -1,0 +1,20 @@
+--MODAL/FETCH RENDERING NOTES:
+       -At the moment, the way the actual custom hook is getting called (fetch),
+        is from the [pageNum, setTriggerRender] dependency array.
+        -This is a problem, because now the header is not causing re-fethces
+
+--NOTE:
+      -Pagination (endless scroll) is disabled for raids until JOINs issue is solved.
+      -We added a useRef to store the maxRaidId seen for a proposed solution
+      -The backend adds this max raid at upon returning the results
+
+-The reason the 'ref' passing is different for 'Characters', 'Raids', 'Loot' query cards:
+       -So, the refs for these are for pagination / endless scroll. We mark the 10 element with a ref,
+        and when we intersect with this element, we perform another fetch and append the new fetch onto
+        our results array.
+
+       -So why do we pass the refs differently for all three? Well, The 'Characters' and 'Loot' views display
+        the QueryCards in containers of pairs. This means that we mark the 10th pair container with the ref.
+        This is UNLIKE the raids view, in-which we display one card a time, thereby marking the 10th card.
+
+       -TLDR: React.forwardRef is called in: 'Characters.jsx', 'Loot.jsx', and 'RaidsResultCard.jsx'

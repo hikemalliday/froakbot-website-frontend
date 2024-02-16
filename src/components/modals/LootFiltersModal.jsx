@@ -1,15 +1,14 @@
-import React, { useEffect, useState } from "react";
+import { useEffect } from "react";
 import ReactDom from "react-dom";
 
 export const LootFiltersModal = ({
   isOpen,
   setIsOpen,
-  lootFetchObject,
-  setLootFiltersParams,
   lootFiltersParams,
+  setLootFiltersParams,
+  getLootModalFetch,
 }) => {
   if (!isOpen) return null;
-  const [personValue, setPersonValue] = useState("");
 
   useEffect(() => {
     setTimeout(() => {
@@ -27,7 +26,7 @@ export const LootFiltersModal = ({
   const handleFormSubmit = async (e) => {
     e.preventDefault();
 
-    lootFetchObject?.fetchLoot();
+    getLootModalFetch();
     closeModal(isOpen);
   };
 

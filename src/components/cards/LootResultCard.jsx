@@ -1,5 +1,3 @@
-import React from "react";
-
 export const LootResultCard = ({ item }) => {
   const itemIcon = `data:image/png;base64,${item.iconPng}`;
   return (

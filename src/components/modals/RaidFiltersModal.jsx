@@ -1,16 +1,15 @@
-import React, { useEffect, useState } from "react";
+import { useEffect } from "react";
 import ReactDom from "react-dom";
-import { getRaids } from "../../fetches.js";
 
 export const RaidFiltersModal = ({
   isOpen,
   setIsOpen,
-  setRaidsFilterParams,
-  raidsFetchObject,
   raidsFiltersParams,
+  setRaidsFilterParams,
+  getRaidsModalFetch,
 }) => {
   if (!isOpen) return null;
-  const [personValue, setPersonValue] = useState("");
+  //const [personValue, setPersonValue] = useState("");
 
   useEffect(() => {
     setTimeout(() => {
@@ -27,8 +26,7 @@ export const RaidFiltersModal = ({
 
   const handleFormSubmit = async (e) => {
     e.preventDefault();
-
-    raidsFetchObject?.fetchRaids();
+    getRaidsModalFetch();
     closeModal(isOpen);
   };
 

@@ -1,6 +1,5 @@
 import { url } from "../config.js";
 import axios from "axios";
-import { useState, useEffect } from "react";
 
 function titleCase(str) {
   return str.toLowerCase().replace(/\b\w/g, function (char) {
@@ -8,17 +7,15 @@ function titleCase(str) {
   });
 }
 
-export async function getRaids() {
+export async function getRaids(pageNum, maxRaidId) {
   const queryParams = new URLSearchParams(window.location.search);
-
   let personName = queryParams.get("personName") || "";
-  let pageNum = queryParams.get("pageNum") || 1;
   if (personName) personName = titleCase(personName);
   const fullUrl = `${url}get_raids`;
 
   try {
     const results = await axios.get(fullUrl, {
-      params: { personName, pageNum },
+      params: { personName, pageNum, maxRaidId: maxRaidId.current },
     });
 
     if (results && results.status === 200) {
@@ -32,45 +29,3 @@ export async function getRaids() {
     console.log(`ERROR: fetches.getLoot: ${err}`);
   }
 }
-
-export const useGetRaids = (pageNum = 1) => {
-  const [resultsRaids, setResultsRaids] = useState([]);
-  const [isLoadingRaids, setIsLoadingRaids] = useState(false);
-  const [isErrorRaids, setIsErrorRaids] = useState(false);
-  const [errorRaids, setErrorRaids] = useState({});
-  const [hasNextPageRaids, setHasNextPageRaids] = useState(false);
-
-  useEffect(() => {
-    console.log("hooks.useGetLoot.useEffect call");
-    setIsLoadingRaids(true);
-    setIsErrorRaids(false);
-    setErrorRaids({});
-
-    const controller = new AbortController();
-    const { signal } = controller;
-
-    getRaids(pageNum, { signal })
-      .then((data) => {
-        setResultsRaids((prev) => [...prev, ...data]);
-        // 0 = false. Therefore, if data.length is a single element, it is the final page
-        setHasNextPageRaids(Boolean(data.length));
-        setIsLoadingRaids(false);
-      })
-      .catch((error) => {
-        setIsLoadingRaids(false);
-        if (signal.aborted) return;
-        setIsErrorRaids(true);
-        setErrorRaids({ message: error.message });
-      });
-
-    return () => controller.abort();
-  }, [pageNum]);
-
-  return {
-    isLoadingRaids,
-    isErrorRaids,
-    errorRaids,
-    resultsRaids,
-    hasNextPageRaids,
-  };
-};
